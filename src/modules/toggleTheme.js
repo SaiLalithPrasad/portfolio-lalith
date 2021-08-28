@@ -19,7 +19,7 @@ const toggleTheme = () =>
 		: setTheme('body-dark', 'body-light', 'fa-sun', 'fa-moon');
 
 const addBodyClass = () => {
-	if (getBodyClass === 'body-dark') { setTheme('body-dark', 'body-light', 'fa-sun', 'fa-moon') } else {
+	if (getBodyClass === 'body-dark' || getBodyClass == undefined || getBodyClass == null || getBodyClass == '') { setTheme('body-dark', 'body-light', 'fa-sun', 'fa-moon') } else {
 		setTheme('body-light', 'body-dark', 'fa-moon', 'fa-sun')
 	}
 }
