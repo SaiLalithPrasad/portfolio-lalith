@@ -1,24 +1,28 @@
 const getBodyClass = localStorage.getItem('class-body-theme');
 const getBtnClass = localStorage.getItem('class-btn-theme');
-const btnTheme = document.querySelector('.fa-moon');
+const btnTheme = document.querySelector('.fa-sun');
 
 const isDark = () => document.body.classList.contains('body-dark');
 
-const setTheme = (bodyClass, buttonClass) => {
-	document.body.classList.remove(localStorage.getItem('class-body-theme'));
-	btnTheme.classList.remove(localStorage.getItem('class-btn-theme'));
-	document.body.classList.add(bodyClass);
-	btnTheme.classList.add(buttonClass);
-	localStorage.setItem('class-body-theme', bodyClass);
-	localStorage.setItem('class-btn-theme', buttonClass);
+const setTheme = (bodyClassToAdd, bodyClassToRemove, buttonClassToAdd, buttonClassToRemove) => {
+	document.body.classList.remove(bodyClassToRemove);
+	document.body.classList.add(bodyClassToAdd);
+	btnTheme.classList.remove(buttonClassToRemove);
+	btnTheme.classList.add(buttonClassToAdd);
+	localStorage.setItem('class-body-theme', bodyClassToAdd);
+	localStorage.setItem('class-btn-theme', buttonClassToAdd);
 };
 
 const toggleTheme = () =>
 	isDark()
-		? setTheme('body-light', 'fa-moon')
-		: setTheme('body-dark', 'fa-sun');
+		? setTheme('body-light', 'body-dark', 'fa-moon', 'fa-sun')
+		: setTheme('body-dark', 'body-light', 'fa-sun', 'fa-moon');
 
-const addBodyClass = () => document.body.classList.add(getBodyClass);
+const addBodyClass = () => {
+	if (getBodyClass === 'body-dark') { setTheme('body-dark', 'body-light', 'fa-sun', 'fa-moon') } else {
+		setTheme('body-light', 'body-dark', 'fa-moon', 'fa-sun')
+	}
+}
 const addBtnClass = () => btnTheme.classList.add(getBtnClass);
 
 export { toggleTheme, addBodyClass, addBtnClass };

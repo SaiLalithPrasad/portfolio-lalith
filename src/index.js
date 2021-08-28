@@ -5,7 +5,7 @@ import { toggleTheme, addBodyClass, addBtnClass } from './modules/toggleTheme';
 import displayList from './modules/displayList';
 
 const btnHamburger = document.querySelector('.fa-bars');
-const btnTheme = document.querySelector('.fa-moon');
+const btnTheme = document.querySelector('.fa-sun');
 
 btnHamburger.addEventListener('click', displayList);
 btnTheme.addEventListener('click', toggleTheme);
@@ -16,4 +16,4 @@ document.addEventListener('scroll', () => {
 });
 
 addBodyClass();
-addBtnClass();
+// addBtnClass();
